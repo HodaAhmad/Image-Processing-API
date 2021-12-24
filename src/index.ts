@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 
-
 app.get('/', (req, res): void => {
   res.status(200).send('Please visit api/images and type your image URL with the width and Length for image');
 });
