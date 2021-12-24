@@ -9,39 +9,44 @@ const dir = path.join(__dirname, '../../images/original/');
 //thumbnail directory
 const thumbDir = path.join(__dirname, '../../images/thumb/');
 
+//main function to resize image
 const transformImage = async (
   filename: string,
   height: number,
   width: number
 ): Promise<string> => {
+
     //setting the output path for image in thumbnail
-  const outputFilePath =
-  thumbDir + filename + '_thumb_' + width.toString() + '_' + height.toString() + '.jpg';
+  const outputFile =
+  thumbDir + filename + '_thumb_' + width + '_' + height + '.jpg';
+
     //getting original image path
-  const imagePath = dir + filename + '.jpg';
+  const inputFile = dir + filename + '.jpg';
 
   // Check if input image exist in original image folder
-  if (!checkFileExist(imagePath)) {
+  if (!checkFileExist(inputFile)) {
     throw new Error('input image is not found');
   }
 
-  // check if image already exists in thumbnail and do not resize image again if it exists
-  if (!checkFileExist(outputFilePath)) {
+  // check if image already exists in thumbnail and do not resize image if it exists
+  if (!checkFileExist(outputFile)) {
+    
       //check if thumb folder exists, if not create a thumb folder
         if (!fs.existsSync(thumbDir)) {
             await fs.promises.mkdir(thumbDir);
         }
-    await sharp(imagePath)
+      
+    //resize using sharp and buffer output image path
+    await sharp(inputFile)
         .resize(width, height)
-        .toFile(outputFilePath, (err: Error): void => {
-            if(err){
-                throw err;
+        .toFile(outputFile, (error: Error): void => {
+            if(error){
+                throw error;
             }
         })
         .toBuffer();
   }  
-
-  return outputFilePath;
+  return outputFile;
 };
 
 
