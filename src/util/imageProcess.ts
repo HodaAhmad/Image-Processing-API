@@ -49,6 +49,7 @@ const transformImage = async (
     console.log("retrieved");
   }
   */
+ 
   if (!checkFileExist(outputFile)) {
     //check if thumb folder exists, if not create a thumb folder
     if (!fs.existsSync(thumbDir)) {
