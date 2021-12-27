@@ -2,8 +2,7 @@ import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 import checkFileExist from './checkFile';
-import NodeCache from 'node-cache';
-import e from 'express';
+//import NodeCache from 'node-cache';
 
 //original imaeges folder directory
 const dir = path.join(__dirname, '../../images/original/');
@@ -12,7 +11,7 @@ const dir = path.join(__dirname, '../../images/original/');
 const thumbDir = path.join(__dirname, '../../images/thumb/');
 
 //initializing cache
-const myCache = new NodeCache();
+//const myCache = new NodeCache();
 
 //main function to resize image
 const transformImage = async (
@@ -49,7 +48,7 @@ const transformImage = async (
     console.log("retrieved");
   }
   */
- 
+
   if (!checkFileExist(outputFile)) {
     //check if thumb folder exists, if not create a thumb folder
     if (!fs.existsSync(thumbDir)) {

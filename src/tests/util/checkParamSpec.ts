@@ -1,5 +1,4 @@
 import checkParam from '../../util/checkParam';
-import checkFileExist from '../../util/checkFile';
 
 describe('Test input parameters', () => {
   const width = 100;

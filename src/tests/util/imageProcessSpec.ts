@@ -1,10 +1,6 @@
-import app from '../../index';
-import supertest from 'supertest';
 import path from 'path';
 import imageProcess from '../../util/imageProcess';
-import fs from 'fs';
 
-const request = supertest(app);
 const thumbDir = path.join(__dirname, '../../../images/thumb/');
 
 describe('Test image resizing', () => {
